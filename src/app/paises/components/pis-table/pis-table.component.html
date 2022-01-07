@@ -1,0 +1,24 @@
+<table *ngIf="paises.length !== 0" class="table table-over" >
+  <thead>
+    <tr>
+      <td>#</td>
+      <td>Bandera</td>
+      <td>Nombre</td>
+      <td>Poblacion</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of paises; let i=index">
+      <td>{{i + 1}}</td>
+      <td>
+        <img class="img" [src]="item.flags.png" alt="">
+      </td>
+      <td>{{item.capital}},{{item.name.common}}</td>
+      <td>{{item.population}}</td>
+      <td>
+        <a [routerLink]="['/pais',item.fifa]">Ver mas..</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

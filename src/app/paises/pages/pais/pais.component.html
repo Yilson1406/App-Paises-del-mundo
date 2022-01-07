@@ -1,0 +1,21 @@
+<h1>Por Pais</h1>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <app-pais-input
+    (onEnter)="buscar($event)"
+    (onDebounce)="buscar($event)"
+    play="Buscar Pais....."
+    ></app-pais-input>
+  </div>
+</div>
+
+<hr>
+<div class="col">
+  <app-pis-table [paises]="paises" ></app-pis-table>
+</div>
+
+<div class="alert alert-danger" *ngIf="error">
+  ERROR
+</div>
