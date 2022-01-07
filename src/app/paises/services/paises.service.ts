@@ -31,5 +31,11 @@ export class PaisesService {
    return this._http.get<Paises>(url);
 
   }
+  region(termino:string):Observable<Paises[]>{
+
+    const url =`${this.URLBASE}region/${termino}`;
+   return this._http.get<Paises[]>(url);
+
+  }
 
 }

@@ -6,12 +6,17 @@ import { PaisesService } from '../../services/paises.service';
   selector: 'app-pais',
   templateUrl: './pais.component.html',
   styles: [
+    `ul,li{
+      cursor:pointer;
+    }`
   ]
 })
 export class PaisComponent implements OnInit {
   error:boolean=false;
   termino:string='';
-  paises:Paises[]=[]
+  paises:Paises[]=[];
+  sugeridos:Paises[]=[];
+  mostrar:boolean=false;
   constructor(private _paises:PaisesService) { }
 
   ngOnInit(): void {
@@ -26,6 +31,16 @@ export class PaisComponent implements OnInit {
           console.log(this.paises);
         },
       error:(err)=>{this.error=true; this.paises = []}
+      })
+    }
+    sugerencias(termino:string){
+      this.termino= termino
+      this.mostrar = true;
+      this._paises.buscarpais(termino)
+      .subscribe({
+        next:pis=>{
+          this.sugeridos =pis
+        }
       })
     }
 

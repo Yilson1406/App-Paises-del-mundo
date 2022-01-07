@@ -5,10 +5,26 @@
   <div class="col">
     <app-pais-input
     (onEnter)="buscar($event)"
-    (onDebounce)="buscar($event)"
+    (onDebounce)="sugerencias($event)"
     play="Buscar Pais....."
     ></app-pais-input>
   </div>
+  <ul *ngIf="mostrar" >
+    <li
+    (click)="buscar(termino)" 
+    class="list-group-item list-group-item-action">
+      <a class="nav-link">
+        Buscar "{{termino}}"
+      </a>
+    </li>
+
+    <li *ngFor="let item of sugeridos" class="list-group-item list-group-item-action">
+      <a class="nav-link" [routerLink]="['pais',item.fifa]">
+        {{item.name.common}}
+      </a>
+      
+    </li>
+  </ul>
 </div>
 
 <hr>

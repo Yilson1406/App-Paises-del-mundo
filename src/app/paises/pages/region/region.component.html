@@ -1,1 +1,20 @@
-<p>region works!</p>
+<h3>Buscar por Region</h3>
+<hr>
+<h5>Region Seleccionada: {{regionactiva |titlecase}}</h5>
+<div class="row">
+  <div class="col">
+    <button
+    *ngFor="let item of regiones"
+    [class]="(item === regionactiva) ? 'btn btn-success m-1':'btn btn-outline-success m-1'"
+    (click)="activaregoin(item)"
+    >
+      {{item}}
+    </button>
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-pis-table [paises]="paises" ></app-pis-table>
+    </div>
+  </div>
+
+</div>
